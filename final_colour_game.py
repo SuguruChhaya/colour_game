@@ -77,13 +77,10 @@ def forty_five_sec():
         connection = sqlite3.connect('highscores.db')
         cursor = connection.cursor()
         question_text = ""
-        print("1")
         if score > int(highscore_table):
             question_text += "NEW HIGHSCORE!\n"
             #!Have to specify users to update
-            print("2")
             cursor.execute(f"UPDATE highscores SET {difficulty.get()} = {score} WHERE username ='{user.get()}'")
-            print("3")
         question_text += f"Your score is {score}.\nContinue playing?"
 
 
