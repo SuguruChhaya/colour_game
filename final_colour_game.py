@@ -211,7 +211,7 @@ def game_window():
         Label(game, text=label_text, width=8).grid(row=colour_row_tracker, column=2, sticky=W)
         colour_row_tracker += 1
 
-    forty_five_sec_timer = 10
+    forty_five_sec_timer = 45
     five_sec_countdown = 5
 
     five_sec()
