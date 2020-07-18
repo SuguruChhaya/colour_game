@@ -77,9 +77,13 @@ def forty_five_sec():
         connection = sqlite3.connect('highscores.db')
         cursor = connection.cursor()
         question_text = ""
+        print("1")
         if score > int(highscore_table):
             question_text += "NEW HIGHSCORE!\n"
-            cursor.execute(f"UPDATE highscores SET {difficulty.get()} = {score}")
+            #!Have to specify users to update
+            print("2")
+            cursor.execute(f"UPDATE highscores SET {difficulty.get()} = {score} WHERE username ='{user.get()}'")
+            print("3")
         question_text += f"Your score is {score}.\nContinue playing?"
 
 
@@ -133,7 +137,7 @@ def game_window():
     colour_list = ['yellow', 'green yellow', 'green', 'sky blue', 'white', 'gray', 'orange', 'pink', 'magenta', 'red', 'purple', 'blue', 'black']
     answer_list = ['yellow', 'light green', 'green', 'light blue', 'white', 'gray', 'orange', 'pink', 'magenta', 'red', 'purple', 'blue', 'black']
     background_list = ['yellow', 'green yellow', 'green', 'sky blue', 'white', 'gray', 'orange', 'pink', 'magenta', 'red', 'purple', 'blue']
-    audio_list = ['yellow.mp3', 'light_green.mp3', 'green.mp3', 'light_blue.mp3', 'white.mp3', 'gray.mp3', 'orange.mp3', 'pink.mp3', 'magenta.mp3', 'red.mp3', 'purple.mp3', 'blue.mp3', 'black.mp3']
+    audio_list = ['audio/yellow.mp3', 'audio/light_green.mp3', 'audio/green.mp3', 'audio/light_blue.mp3', 'audio/white.mp3', 'audio/gray.mp3', 'audio/orange.mp3', 'audio/pink.mp3', 'audio/magenta.mp3', 'audio/red.mp3', 'audio/purple.mp3', 'audio/blue.mp3', 'audio/black.mp3']
 
     score = 0
     header_game_font = tkinter.font.Font(size=20, slant="italic", weight="bold", underline=1)
@@ -207,7 +211,7 @@ def game_window():
         Label(game, text=label_text, width=8).grid(row=colour_row_tracker, column=2, sticky=W)
         colour_row_tracker += 1
 
-    forty_five_sec_timer = 45
+    forty_five_sec_timer = 10
     five_sec_countdown = 5
 
     five_sec()
