@@ -131,7 +131,7 @@ def game_window():
     game = Tk()
     game.title("Main game window")
 
-    colour_list = ['yellow', 'green yellow', 'green', 'sky blue', 'white', 'gray', 'orange', 'pink', 'magenta', 'red', 'purple', 'blue', 'black']
+    colour_list = ['yellow', 'light green', 'green', 'sky blue', 'white', 'gray', 'orange', 'pink', 'magenta', 'red', 'purple', 'blue', 'black']
     answer_list = ['yellow', 'light green', 'green', 'light blue', 'white', 'gray', 'orange', 'pink', 'magenta', 'red', 'purple', 'blue', 'black']
     background_list = ['yellow', 'green yellow', 'green', 'sky blue', 'white', 'gray', 'orange', 'pink', 'magenta', 'red', 'purple', 'blue']
     audio_list = ['audio/yellow.mp3', 'audio/light_green.mp3', 'audio/green.mp3', 'audio/light_blue.mp3', 'audio/white.mp3', 'audio/gray.mp3', 'audio/orange.mp3', 'audio/pink.mp3', 'audio/magenta.mp3', 'audio/red.mp3', 'audio/purple.mp3', 'audio/blue.mp3', 'audio/black.mp3']
@@ -200,9 +200,7 @@ def game_window():
     colour_row_tracker = 4
     for item in colour_list:
         label_text= item
-        if item == "green yellow":
-            label_text = "light green"
-        elif item == "sky blue":
+        if item == "sky blue":
             label_text = "light blue"
         Label(game, bg=item, width= 10).grid(row=colour_row_tracker, column=1, sticky=E)
         Label(game, text=label_text, width=8).grid(row=colour_row_tracker, column=2, sticky=W)
