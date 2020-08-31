@@ -1,3 +1,7 @@
+'''
+I should have managed this project in classes to make the order smoother. It would have prevented be to declare so many global variables too. 
+'''
+
 from tkinter import *
 from tkinter import messagebox
 import tkinter.font
@@ -22,17 +26,15 @@ def check_answer(a, b, c):
         try:
             main_entry.after_cancel(repeat)
         except NameError:
+            
             pass
         random_choose()
 
 
 def audio_play():
-    #!I think the after is binded multiple times when this is ran.
-        #*The problem is somewhere in here: the music is played excessively.
     global repeat
     mixer.music.load(audio)
     mixer.music.play()
-    #!The repeating issue was solved by assigning the after thing to a variable.
     #*I didn't really know how to use the after_cancel function.
     #*Thanks to https://stackoverflow.com/questions/25702094/tkinter-after-cancel-in-python 
     repeat= main_entry.after(1500, audio_play)
@@ -100,8 +102,6 @@ def five_sec():
         five_sec_countdown -= 1
         countdown_number.after(1000, five_sec)
     elif five_sec_countdown == 0:
-        #?Somehow doesn't change...
-        #https://stackoverflow.com/questions/28165342/python-time-sleep-delays-previous-commands 
         countdown_number.config(text="START!!")
         #*.update() forces the update
         countdown_number.update()
@@ -139,7 +139,6 @@ def game_window():
     score = 0
     header_game_font = tkinter.font.Font(size=20, slant="italic", weight="bold", underline=1)
     header_game_label = Label(game, text="COLOUR GAME", font=header_game_font, width=30)
-    #*Might have to change columnspan
     header_game_label.grid(row=0, column=0, columnspan=3)
 
     countdown_info_font = tkinter.font.Font(size=18)
@@ -408,7 +407,7 @@ def add_user():
     preparationwindow()
 
 def check(var, index, mode):
-    #*For when there is nothing in record
+    #*Checking whether username is valid
     if len(checker.get()) == 0 or len(checker.get()) > 15:
         if len(checker.get()) == 0:
             new_user_label_text = f"'{checker.get()}'' is an empty username."
